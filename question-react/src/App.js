@@ -3,32 +3,56 @@ import logo from './logo.svg';
 import './App.css';
 import data from './data';
 import Panel from './components/panel/Panel';
-import SearchBar from './components/searchBar/SearchBar'
+import Select from './components/searchBar/select';
+import Pyramide from './components/pyramide/Pyramide';
 
 class App extends Component {
   constructor(props) {
     super(props);
+    const sessionTmp= [];
+    data.forEach((element, index) => {
+      sessionTmp[index] = '-';
+    });
+
     this.state = {
-      filterText: 0      
+      indexSelected: 0,
+      session: sessionTmp
     };
 
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);    
+    this.handleSelectChange = this.handleSelectChange.bind(this);    
+    this.handleAnswerGiven = this.handleAnswerGiven.bind(this);    
   }
 
-  handleFilterTextChange(filterText) {
+  handleSelectChange(indexSelected) {        
     this.setState({
-      filterText: filterText
-    });
-  }
+      indexSelected: indexSelected ? indexSelected.value : null,      
+    });    
+  }  
+  handleAnswerGiven(value) {    
+    const sessionClone = this.state.session;
+    sessionClone[this.state.indexSelected] = value;    
+    this.setState({
+      session: sessionClone
+    })    
+  }  
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">          
-          <SearchBar filterText={this.state.filterText}
-          onFilterTextChange={this.handleFilterTextChange}/>
+        <header className="App-header">                    
+          <Select options={data} onSelectChange={this.handleSelectChange} session={this.state.session}/>
         </header>
-        <Panel data={data[this.state.filterText]}></Panel>
+        <div className='app-container'>       
+        {this.state.indexSelected ? 
+          <Panel 
+          data={data[this.state.indexSelected]} 
+          session={this.state.session[this.state.indexSelected]}
+          onAnswerGiven={this.handleAnswerGiven}></Panel>
+          :
+          <Pyramide profits={this.state.session}></Pyramide>
+        }
+        </div>
+        
       </div>
     );
   }

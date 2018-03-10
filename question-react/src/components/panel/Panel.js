@@ -3,13 +3,25 @@ import Question from '../Question';
 import Answers from '../answer/Answers';
 
 export default class Panel extends Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.handleUpdateSession = this.handleUpdateSession.bind(this);
+  }
+
+  handleUpdateSession(session){        
+    this.props.onAnswerGiven(session);
+  }
+  render() {    
     const data = this.props.data;
 
     return (
-      <div>
-        <Question question={data.question}/>
-        <Answers answers={data.answers}></Answers>
+      <div className='panelContainer'>
+          <Question question={data.question}/>
+          <Answers 
+          answers={data.answers} 
+          session={this.props.session}        
+          updateSession={this.handleUpdateSession}>
+        </Answers>        
       </div>
     );
   }
