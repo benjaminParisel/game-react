@@ -1,27 +1,45 @@
 import React, { Component } from 'react';
 import Question from '../Question';
 import Answers from '../answer/Answers';
+import './panel.css';
+import ref from '../../data.js';
 
 export default class Panel extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleUpdateSession = this.handleUpdateSession.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
 
-  handleUpdateSession(session){        
-    this.props.onAnswerGiven(session);
+  handleUpdateSession(value) {
+    console.log('handleUpdateSession', value);
+    // Activer le bouton next    
+    this.props.onAnswerGiven(value);
   }
-  render() {    
-    const data = this.props.data;
+
+  nextQuestion() {
+    this.props.onNextQuestion();
+  }
+
+
+  render() {
+    const data = this.props.data;    
 
     return (
       <div className='jumbotron'>
-          <Question question={data.question}/>
-          <Answers 
-          answers={data.answers} 
-          session={this.props.session}        
-          updateSession={this.handleUpdateSession}>
-        </Answers>        
+        <Question question={data.question} />
+        <Answers
+          answers={data.answers}
+          session={this.props.session}
+          updateSession={this.handleUpdateSession}>          
+        </Answers>
+        <div className='footer'>
+          <p>{this.props.activeQuestion + 1}/{ref.length}</p> 
+          <button
+            className={'btn btn-lg btn-success'}
+            disabled={this.props.activeQuestion + 1 === ref.length}
+            onClick={this.nextQuestion}>></button>
+        </div>
       </div>
     );
   }

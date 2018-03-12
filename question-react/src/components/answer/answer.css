@@ -7,7 +7,7 @@
 }
 
 .answers div.selected {
-	background-color: blueviolet;
+	background-color: orangered;
 }
 
 .answers div.success {
@@ -28,4 +28,7 @@
 
 .answers div.disabled {
 	visibility: hidden;	
+}
+.answers div.hide {
+	display: none;
 }

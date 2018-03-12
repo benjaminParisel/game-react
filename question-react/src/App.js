@@ -22,6 +22,7 @@ class App extends Component {
 
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleAnswerGiven = this.handleAnswerGiven.bind(this);
+    this.handleNextQuestion = this.handleNextQuestion.bind(this);
   }
 
   handleSelectChange(indexSelected) {    
@@ -29,12 +30,20 @@ class App extends Component {
       indexSelected: indexSelected ? indexSelected.value : null,
     });
   }
-  handleAnswerGiven(value) {
-    const sessionClone = this.state.session;
-    sessionClone[this.state.indexSelected] = value;
-    this.setState({
-      session: sessionClone
-    })
+
+  handleAnswerGiven(value) {        
+    // I need to find why this setState doesn't work.
+     const sessionClone = this.state.session;    
+     sessionClone[this.state.indexSelected] = value;
+     this.setState({
+       session: sessionClone
+     });    
+  }
+
+  handleNextQuestion() {    
+    this.setState((prevState, props) => ({
+      indexSelected: prevState.indexSelected + 1
+    }));    
   }
 
   render() {
@@ -56,9 +65,11 @@ class App extends Component {
         <div className='container'>          
           {Number.isInteger(this.state.indexSelected) ?
             <Panel
-              data={data[this.state.indexSelected]}
-              session={this.state.session[this.state.indexSelected]}
-              onAnswerGiven={this.handleAnswerGiven}></Panel>
+              data={data[this.state.indexSelected]}              
+              onAnswerGiven={this.handleAnswerGiven}
+              onNextQuestion={this.handleNextQuestion}
+              activeQuestion={this.state.indexSelected}
+              ></Panel>
             :
             <Pyramide profits={this.state.session}></Pyramide>
           }

@@ -154,7 +154,7 @@ export default [
             ]
         },
         {
-            "category": "Bourboule Maboul",
+            "category": "Lard et la manière",
             "question": "A quel gastronome français contemporain doit-on la célèbre phrase : 'Quand on sait pas, on goûte !'",
             "answers": [
                 {
