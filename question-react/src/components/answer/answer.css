@@ -1,37 +1,31 @@
-.answersContainer {    
-    width: auto;      
-    height: 400px;     
-    padding-left: 7rem;
-    padding-right: 7rem;    
+.answers div {
+	background-color: #337ab7;
+	color: #FFFFFF;
+	border: 2px lightgray solid;
+	border-radius: 6px;
+	cursor: pointer;
 }
 
-.answer {
-    margin: 1rem;    
-    width: 45%;    
-    height: 43%;
-    border-color: black;              
-    border-style: double;
-    float: left;
-    border-radius: 12em;
+.answers div.selected {
+	background-color: blueviolet;
 }
 
-.label {
-    position: relative;
-    top: 50%;
+.answers div.success {
+	background-color: green;
 }
 
-.answer:hover{
-    background-color: orange
+.answers div.error {
+	background-color: red;
 }
 
-.error {
-    background-color: red
+.answers div:hover {
+	background-color: #31708F;
 }
 
-.success {
-    background-color: green
-    
+.answers div:hover:active {
+	background-color: #286090;
 }
-.selected{
-    background-color:grey
+
+.answers div.disabled {
+	visibility: hidden;	
 }

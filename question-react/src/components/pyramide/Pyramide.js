@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import PyramideRow from './PyramideRow';
 
 export default class Pyramide extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    
-  }  
+
+  }
 
   render() {
-    const rows= [];
-    console.log(this.props.profits);
-    this.props.profits.forEach((profit, index) => {
-      console.log(profit);
-        rows.push(
-            <PyramideRow
+    const rows = [];    
+    this.props.profits.forEach((profit, index) => {      
+      rows.push(
+        <PyramideRow
           status={profit}
           nbQuestion={index}
           key={index}
@@ -21,15 +19,17 @@ export default class Pyramide extends Component {
       );
     });
     return (
+      <div className='jumbotron'>
         <table>
-        <thead>
-        <tr>
-          <th>Level</th>
-          <th>Completed</th>
-        </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Completed</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
     );
   }
 }

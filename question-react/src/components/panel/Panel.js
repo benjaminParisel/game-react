@@ -15,7 +15,7 @@ export default class Panel extends Component {
     const data = this.props.data;
 
     return (
-      <div className='panelContainer'>
+      <div className='jumbotron'>
           <Question question={data.question}/>
           <Answers 
           answers={data.answers} 

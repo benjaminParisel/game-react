@@ -5,33 +5,23 @@ export default class AnswerItem extends Component {
   constructor(props) {
     super(props);    
     this.state = { class: 'answer'};
-    this.eventHandler = this.eventHandler.bind(this);    
-    this.preselectChoose = this.preselectChoose.bind(this);    
+    this.eventHandler = this.eventHandler.bind(this, this.props.id);    
+    this.toogleSelected = this.toogleSelected.bind(this,this.props.id);    
   }
 
-  eventHandler(event) {        
-      if (this.props.answer.isTrue) {        
-        this.setState({
-          answerSession : true, class: ' success'
-        });        
-      } else {        
-        this.setState({
-          answerSession : false, class: 'error'
-        });            
-      }
-      this.props.onChooseAnswer(this.state.answerSession);
+  eventHandler(id, event) {            
+      this.props.getRightAnswer(id);    
   }  
 
-  preselectChoose(event){
-    this.setState({
-      class: 'selected'
-    });
-  }
+  toogleSelected(id, event){         
+    this.props.handleSelected(id);
+  }  
 
   render() {    
-    return (
-      <div className={`answer ${this.state.class}`} onClick={this.preselectChoose} onDoubleClick={this.eventHandler}>
-        <span className='label'>{ this.props.answer.label}</span>
+    return (      
+      <div className={`col-lg-6 answer ${this.props.display}`} onClick={this.toogleSelected} onDoubleClick={this.eventHandler}>
+        <h4>{ this.props.answer.label}</h4>
+        <h4>aza { this.props.isSelected}</h4>
       </div>
     );
   }
