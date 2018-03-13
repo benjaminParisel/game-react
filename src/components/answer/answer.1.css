@@ -1,0 +1,37 @@
+.answersContainer {    
+    width: auto;      
+    height: 400px;     
+    padding-left: 7rem;
+    padding-right: 7rem;    
+}
+
+.answer {
+    margin: 1rem;    
+    width: 45%;    
+    height: 43%;
+    border-color: black;              
+    border-style: double;
+    float: left;
+    border-radius: 12em;
+}
+
+.label {
+    position: relative;
+    top: 50%;
+}
+
+.answer:hover{
+    background-color: orange
+}
+
+.error {
+    background-color: red
+}
+
+.success {
+    background-color: green
+    
+}
+.selected{
+    background-color:grey
+}
