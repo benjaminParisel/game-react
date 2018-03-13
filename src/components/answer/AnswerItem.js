@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './answer.css';
+import './answer.css';
 
 export default class AnswerItem extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class AnswerItem extends Component {
   render() {
     return (
       <div
-        className={`col-lg-6 answer ${this.props.display}`}
+        className={`col-lg-6 ${this.props.display}`}
         onClick={this.toogleSelected}
         onDoubleClick={this.eventHandler}>
         <h4>{this.props.answer.label}</h4>

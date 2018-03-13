@@ -8,11 +8,12 @@ export default class Answers extends Component {
     this.state = { display: this.defaultDisplay()};
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     this.handleVerifyAnswer = this.handleVerifyAnswer.bind(this);
-    //this.handleChooseAnswer = this.handleChooseAnswer.bind(this);
+
   }
 
   defaultDisplay() {
-    return ['', '', '', ''];
+    //return ['', 'hideWrong', '', ''];
+      return ['', '', '', ''];
   }
 
   handleAnswerSelected(index) {
@@ -23,23 +24,27 @@ export default class Answers extends Component {
 
   handleVerifyAnswer(index) {    
     const value = this.state.display;
+    let boolean = false;
     if (this.props.answers[index].isTrue) {
+      boolean = true;
       // Bonne réponse
       value[index] = 'success';
-      this.props.updateSession(true);
     } else {
       // Mauvaise réponse                
       const trustly = this.props.answers.findIndex(element => element.isTrue);
       value[trustly] = 'success';
       value[index] = 'error';
-      this.props.updateSession(false);
     }
 
-    this.setState({ display: value });    
+    this.setState({ display: value });
+    this.props.updateSession(boolean);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ display: this.defaultDisplay() });
+      if(nextProps.answers !== this.props.answers) {
+        this.setState({display: this.defaultDisplay()});
+      }
+
   }
 
   render() {

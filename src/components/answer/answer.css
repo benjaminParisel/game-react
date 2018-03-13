@@ -29,6 +29,10 @@
 .answers div.disabled {
 	visibility: hidden;	
 }
-.answers div.hide {
-	display: none;
+.answers div.hideWrong{
+	opacity: 0;
+	pointer-events: none;
+	cursor: default;
+	text-decoration:none;
+	color:black;
 }

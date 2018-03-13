@@ -12,7 +12,6 @@ export default class Panel extends Component {
   }
 
   handleUpdateSession(value) {
-    console.log('handleUpdateSession', value);
     // Activer le bouton next    
     this.props.onAnswerGiven(value);
   }
@@ -30,7 +29,6 @@ export default class Panel extends Component {
         <Question question={data.question} />
         <Answers
           answers={data.answers}
-          session={this.props.session}
           updateSession={this.handleUpdateSession}>          
         </Answers>
         <div className='footer'>
