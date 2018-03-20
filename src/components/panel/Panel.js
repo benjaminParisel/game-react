@@ -29,7 +29,8 @@ export default class Panel extends Component {
         <Question question={data.question} />
         <Answers
           answers={data.answers}
-          updateSession={this.handleUpdateSession}>          
+          updateSession={this.handleUpdateSession}
+          fiftyFifty={this.props.fiftyFifty}>
         </Answers>
         <div className='footer'>
           <p>{this.props.activeQuestion + 1}/{ref.length}</p> 

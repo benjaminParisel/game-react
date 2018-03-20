@@ -16,12 +16,14 @@ class App extends Component {
 
         this.state = {
             indexSelected: '-',
-            session: sessionTmp
+            session: sessionTmp,
+            fiftyFifty: false
         };
 
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleAnswerGiven = this.handleAnswerGiven.bind(this);
         this.handleNextQuestion = this.handleNextQuestion.bind(this);
+        this.fiftyFifty = this.fiftyFifty.bind(this);
     }
 
     handleSelectChange(indexSelected) {
@@ -45,6 +47,12 @@ class App extends Component {
         }));
     }
 
+    fiftyFifty(){
+        this.setState({
+            fiftyFifty: true
+        });
+    }
+
     render() {
         return (
             <div className="container">
@@ -53,10 +61,14 @@ class App extends Component {
                         <ul className="nav nav-pills pull-right">
                             <li id="call"><a className="btn btn-lg btn-default" href="#"
                                              role="button">Appel à un ami</a></li>
-                            <li id="fifty"><a className="btn btn-lg btn-default" href="#"
-                                              role="button">50/50</a></li>
-                            <li id="fifty"><a className="btn btn-lg btn-default" href="#"
-                                              role="button">Public</a></li>
+                            <li id="public"><a className="btn btn-lg btn-default" href="#"
+                                              role="button">
+                                Public</a></li>
+                            <button className="btn btn-lg btn-default"
+                                    onClick={this.fiftyFifty}
+                                    disabled={this.state.fiftyFifty}>
+                                50/50
+                            </button>
                         </ul>
                         <Select options={data} onSelectChange={this.handleSelectChange} session={this.state.session}/>
                     </nav>
@@ -68,6 +80,7 @@ class App extends Component {
                             onAnswerGiven={this.handleAnswerGiven}
                             onNextQuestion={this.handleNextQuestion}
                             activeQuestion={this.state.indexSelected}
+                            fiftyFifty={this.state.fiftyFifty}
                         ></Panel>
                         :
                         <Pyramide profits={this.state.session}></Pyramide>
