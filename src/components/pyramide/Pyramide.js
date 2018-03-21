@@ -8,10 +8,12 @@ export default class Pyramide extends Component {
   }
 
   render() {
-    const rows = [];    
-    this.props.profits.forEach((profit, index) => {      
+    const rows = [];
+
+    this.props.profits.forEach((profit, index) => {
       rows.push(
         <PyramideRow
+          active ={this.props.activeQuestion}
           status={profit}
           nbQuestion={index}
           key={index}
@@ -19,14 +21,9 @@ export default class Pyramide extends Component {
       );
     });
     return (
-      <div className='jumbotron'>
+      <div>
+        <h3>Pyramide des gains</h3>
         <table>
-          <thead>
-            <tr>
-              <th>Level</th>
-              <th>Completed</th>
-            </tr>
-          </thead>
           <tbody>{rows}</tbody>
         </table>
       </div>

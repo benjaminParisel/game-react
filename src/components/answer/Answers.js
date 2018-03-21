@@ -18,7 +18,7 @@ export default class Answers extends Component {
 
     handleAnswerSelected(index) {
         const value = this.defaultDisplay();
-        value[index] = 'selected';
+        value[index] =  this.state.display[index] + ' selected';
         this.setState({display: value});
     }
 

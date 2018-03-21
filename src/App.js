@@ -55,14 +55,14 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <header className="header clearfix">
                     <nav>
                         <ul className="nav nav-pills pull-right">
                             <li id="call"><a className="btn btn-lg btn-default" href="#"
                                              role="button">Appel à un ami</a></li>
                             <li id="public"><a className="btn btn-lg btn-default" href="#"
-                                              role="button">
+                                               role="button">
                                 Public</a></li>
                             <button className="btn btn-lg btn-default"
                                     onClick={this.fiftyFifty}
@@ -73,20 +73,27 @@ class App extends Component {
                         <Select options={data} onSelectChange={this.handleSelectChange} session={this.state.session}/>
                     </nav>
                 </header>
-                <div className='container'>
-                    {Number.isInteger(this.state.indexSelected) ?
-                        <Panel
-                            data={data[this.state.indexSelected]}
-                            onAnswerGiven={this.handleAnswerGiven}
-                            onNextQuestion={this.handleNextQuestion}
-                            activeQuestion={this.state.indexSelected}
-                            fiftyFifty={this.state.fiftyFifty}
-                        ></Panel>
-                        :
-                        <Pyramide profits={this.state.session}></Pyramide>
-                    }
-                </div>
+                <div className="panel">
+                    <div className='pyramide'>
+                        <Pyramide profits={this.state.session} activeQuestion={this.state.indexSelected} data={data[this.state.indexSelected]}></Pyramide>
+                    </div>
+                    <div className="container home">
+                        {Number.isInteger(this.state.indexSelected) ?
+                            <Panel
+                                data={data[this.state.indexSelected]}
+                                onAnswerGiven={this.handleAnswerGiven}
+                                onNextQuestion={this.handleNextQuestion}
+                                activeQuestion={this.state.indexSelected}
+                                fiftyFifty={this.state.fiftyFifty}
+                            ></Panel>
+                            :
+                            <div className='jumbotron'>
+                                <p>Welcome into QPUC</p>
+                            </div>
+                        }
 
+                    </div>
+                </div>
             </div>
         );
     }
