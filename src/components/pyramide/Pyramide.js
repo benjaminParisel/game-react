@@ -21,9 +21,9 @@ export default class Pyramide extends Component {
       );
     });
     return (
-      <div>
+      <div className="pyramide">
         <h3>Pyramide des gains</h3>
-        <table>
+        <table className="tableProfit">
           <tbody>{rows}</tbody>
         </table>
       </div>

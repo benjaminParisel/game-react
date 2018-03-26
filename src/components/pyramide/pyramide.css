@@ -1,7 +1,21 @@
+.pyramide {
+    text-align: center;
+}
+
+.tableProfit{
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+}
+
 .active {
-    background-color: orangered !important;
+    background-color: #ffa337 !important;
 }
 
 .palier{
-    background-color: #1c81ff;
+    /*background-color: #1c81ff;*/
+    border-bottom: solid;
+    width: 100%;
+}
+
+.toto {
+    width: 200px;
 }

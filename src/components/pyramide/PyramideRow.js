@@ -8,7 +8,7 @@ export default class PyramideRow extends Component {
     }
   render() {
     const sessionStatus = this.props.status;
-    const palier = [4,8,12];
+    const palier = [3,6,9,12];
     
     const status = typeof(sessionStatus) !== "boolean" ? '-' :
         sessionStatus ? 
@@ -16,8 +16,8 @@ export default class PyramideRow extends Component {
         <span style={{color: 'red'}}>X</span>;
     return (
       <tr className={(palier.includes(this.props.nbQuestion +1) ? 'palier': '') + (this.props.nbQuestion == this.props.active ? ' active': '')}>
-        <td>{status}</td>
-        <td>{data[this.props.nbQuestion].category}</td>
+        <td>{this.props.nbQuestion +1}</td>
+        <td className="toto">{typeof(sessionStatus) !== "boolean" ? '' : data[this.props.nbQuestion].category}</td>
       </tr>
     );
   }

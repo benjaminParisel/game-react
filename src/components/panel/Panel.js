@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Question from '../Question';
+import Question from '../question/Question';
 import Answers from '../answer/Answers';
 import './panel.css';
 import ref from '../../data.js';
@@ -26,7 +26,7 @@ export default class Panel extends Component {
 
     return (
       <div className='jumbotron'>
-        <Question question={data.question} />
+        <Question question={data.question} theme={data.category}/>
         <Answers
           answers={data.answers}
           updateSession={this.handleUpdateSession}
