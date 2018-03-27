@@ -2,9 +2,21 @@ import React, {Component} from 'react';
 import './App.css';
 import data from './data';
 import Panel from './components/panel/Panel';
-import Select from './components/searchBar/select';
+// import Select from './components/searchBar/select';
 import Pyramide from './components/pyramide/Pyramide';
 import Modal from 'react-modal';
+import logo1 from './images/1.jpg';
+import logo2 from './images/2.jpg';
+import logo3 from './images/3.jpg';
+import logo4 from './images/4.jpg';
+import logo5 from './images/5.jpg';
+import logo6 from './images/6.jpg';
+import logo7 from './images/7.jpg';
+import logo8 from './images/8.jpg';
+import logo9 from './images/9.jpg';
+import logo10 from './images/10.jpg';
+import logo11 from './images/11.jpg';
+import logo12 from './images/12.jpg';
 import ReactCountdownClock from 'react-countdown-clock';
 
 const customStyles = {
@@ -38,8 +50,15 @@ class App extends Component {
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleAnswerGiven = this.handleAnswerGiven.bind(this);
         this.handleNextQuestion = this.handleNextQuestion.bind(this);
+        this.start = this.start.bind(this);
         this.fiftyFifty = this.fiftyFifty.bind(this);
         this.callPublic = this.callPublic.bind(this);
+    }
+
+    start(){
+        this.setState({
+            indexSelected: 0
+        });
     }
 
     handleSelectChange(indexSelected) {
@@ -62,6 +81,8 @@ class App extends Component {
             indexSelected: prevState.indexSelected + 1
         }));
     }
+
+
 
     fiftyFifty(){
         this.setState({
@@ -86,6 +107,10 @@ class App extends Component {
 
 
 render() {
+
+        let logos = [logo1,logo2,logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11,logo12];
+
+
         return (
             <div>
                 <header className="header clearfix">
@@ -117,12 +142,17 @@ render() {
                                 50/50
                             </button>
                         </ul>
-                        <Select options={data} onSelectChange={this.handleSelectChange} session={this.state.session}/>
+                        {/*<Select options={data} onSelectChange={this.handleSelectChange} session={this.state.session}/>*/}
                     </nav>
                 </header>
                 <div className="panel">
                     <div className='pyramide'>
                         <Pyramide profits={this.state.session} activeQuestion={this.state.indexSelected} data={data[this.state.indexSelected]}></Pyramide>
+                    </div>
+                    <div className="logo">
+                        { Number.isInteger(this.state.indexSelected) ?
+                        <img src={logos[this.state.indexSelected]} alt="Logo" height="100%" width="100%"/> : ''
+                        }
                     </div>
                     <div className="container home">
                         {Number.isInteger(this.state.indexSelected) ?
@@ -137,6 +167,9 @@ render() {
                             :
                             <div className='jumbotron'>
                                 <p>Bienvenue dans GVDH</p>
+                                <button
+                                    className={'btn btn-lg btn-success'}
+                                    onClick={this.start}>Jouer</button>
                             </div>
                         }
                     </div>

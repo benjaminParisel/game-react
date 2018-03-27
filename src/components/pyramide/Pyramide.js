@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import PyramideRow from './PyramideRow';
 
 export default class Pyramide extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     const rows = [];
 

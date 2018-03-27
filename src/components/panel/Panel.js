@@ -12,7 +12,6 @@ export default class Panel extends Component {
   }
 
   handleUpdateSession(value) {
-    // Activer le bouton next    
     this.props.onAnswerGiven(value);
   }
 
