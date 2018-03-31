@@ -1,24 +1,24 @@
-export default [
+export default [        
         {
-            "category": "Boire ou conduire, il faut choisir !",
-            "question": "Parmis les propositions suivantes, laquelle n'est pas une technique de programmation informatique ? ",
+            "category": "Après l'effort, le reconfort",
+            "question": "Dans le très célèbre jeu LOL (ou League of Legends pour les noobs), au total, combien existe t'il de champions ?",
             "answers": [
                 {
-                    "label": "Java",
+                    "label": "10",
                     "isTrue": false
                 },
                 {
-                    "label": "C",
+                    "label": "90",
                     "isTrue": false
                 },
                 {
-                    "label": "C++",
-                    "isTrue": false
-                },
-                {
-                    "label": "Apéro ++",
+                    "label": "140",
                     "isTrue": true
-                }
+                },
+                {
+                    "label": "180",
+                    "isTrue": false
+                }                
             ]
         },
         {
@@ -70,19 +70,19 @@ export default [
             "question": "Quelle suite de chiffres vous fait penser à une poule ?",
             "answers": [
                 {
-                    "label": "195384",
+                    "label": "195 319",
                     "isTrue": false
                 },
                 {
-                    "label": "372182",
+                    "label": "372 182",
                     "isTrue": false
                 },
                 {
-                    "label": "434195",
+                    "label": "434 195",
                     "isTrue": false
                 },
                 {
-                    "label": "444719",
+                    "label": "444 719",
                     "isTrue": true
                 }
             ]
@@ -177,7 +177,7 @@ export default [
         },
         {
             "category": "L'éducation selon Stanislas",
-            "question": "Quel lieu très largement fréquenté par les étudiants est situé sur la place Stanislas de Nancy??",
+            "question": "Quel lieu très largement fréquenté par les étudiants est situé sur la place Stanislas de Nancy ?",
             "answers": [
                 {
                     "label": "Le Chat Noir",
@@ -220,23 +220,23 @@ export default [
             ]
         },
         {
-            "category": "Informatique 2",
-            "question": "XXX ?",
+            "category": "J'impose mon style",
+            "question": "Le CSS est un language informatique, que signifie cet acronyme ?",
             "answers": [
                 {
-                    "label": "Thermes Choussy",
+                    "label": "Custom Style Shit",
+                    "isTrue": false
+                },
+                {
+                    "label": "Custom Style Sheets",
+                    "isTrue": false
+                },
+                {
+                    "label": "Cascading Style Sheets",
                     "isTrue": true
                 },
                 {
-                    "label": "Thermes Adour",
-                    "isTrue": false
-                },
-                {
-                    "label": "Thermes des Arènes",
-                    "isTrue": false
-                },
-                {
-                    "label": "Les Grands Thermes",
+                    "label": "Cascading Style Shits",
                     "isTrue": false
                 }
             ]
